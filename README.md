@@ -21,8 +21,10 @@ Bewusst **hardwareunabhängig konfigurierbar** gehalten (siehe `models.py`,
   kennen muss.
 
 Alle Optionen (inkl. Gnadenfrist gegen kurzes Flackern, Zeitlimit fürs Warten auf Jobs, das
-tatsächliche Shutdown-Kommando) sind über **Django Admin** einstellbar (`/admin/`, Modell
-"USV-Plugin-Einstellungen") - kein eigenes Frontend nötig.
+tatsächliche Shutdown-Kommando) sind direkt in x32-recorders **Settings-Seite** editierbar (Plugin-
+Karte → "Konfigurieren", nutzt x32-recorders generische Plugin-Web-Konfiguration über
+`plugin_config.py`) - alternativ weiterhin über **Django Admin** (`/admin/`, Modell
+"USV-Plugin-Einstellungen").
 
 ## Sicherheits-Default
 
@@ -53,8 +55,8 @@ pi ALL=(ALL) NOPASSWD: /sbin/shutdown
 
 ## Testen ohne Risiko
 
-1. In Django Admin `shutdown_command` erstmal auf etwas Harmloses setzen, z.B.
-   `echo "USV: shutdown command would fire here" >> /tmp/ups-test.log`.
+1. In den x32-recorder-Settings (oder Django Admin) `shutdown_command` erstmal auf etwas
+   Harmloses setzen, z.B. `echo "USV: shutdown command would fire here" >> /tmp/ups-test.log`.
 2. `check_kind` auf `command` stellen, `command` auf ein Skript, das ihr manuell umschalten könnt
    (z.B. `test -f /tmp/power_ok` - Exit 0 solange die Datei existiert).
 3. `enabled` aktivieren, `poll_interval_s`/`grace_period_s` niedrig setzen (z.B. 2s/5s) für
