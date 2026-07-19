@@ -1,0 +1,3 @@
+# Only needed if check_kind = "gpio" in the Admin config - install manually if you use that mode:
+#   uv pip install -r plugins/x32_recorder_ups_plugin/requirements.txt
+RPi.GPIO; sys_platform == "linux"

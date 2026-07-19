@@ -1,0 +1,5 @@
+{
+  "kind": "django_app",
+  "display_name": "USV-Shutdown-Handler",
+  "description": "Beendet bei Stromausfall eine laufende Aufnahme sauber und fährt den Pi kontrolliert herunter."
+}
